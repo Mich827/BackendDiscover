@@ -1,11 +1,23 @@
 {
- "version": 2,
- "builds": [{
-   "src": "app.js",
-   "use": "@vercel/node"
- }],
- "routes": [{
-   "src": "/(.*)",
-   "dest": "app.js"
- }]
+    "version": 2,
+    "builds": [
+        {
+            "src": "package.json",
+            "use": "vercel-sapper"
+        },
+        {
+            "src": "app.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "app.js",
+            "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            }
+        }
+    ]
 }
